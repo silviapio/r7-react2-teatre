@@ -1,5 +1,6 @@
-import lines from "./linesData.json";
+import React, {Component} from "react";
 import Line from "./Line";
+import lines from "./linesData.json";
 import styled from "styled-components";
 
 const StyledBox = styled.div`
@@ -14,14 +15,41 @@ const AppHeader = styled.header`
   font-style: italic;
 `;
 
-function App() {
-  const linesText = lines.map((item, index) => <Line key={index} text={item} />);
-  return (
-    <StyledBox>
-      <AppHeader>Textos de teatre</AppHeader>
-      {linesText}
-    </StyledBox>
-  );
-}
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentLine: 0,
+    }
+  }
+
+  handleClick = (event) => {
+    event.target.name === "previous" ? 
+      this.setState(prevState => {
+        return {
+          currentLine: prevState.currentLine - 1
+          }
+        }) :
+      this.setState(prevState => {
+        return {
+          currentLine: prevState.currentLine + 1
+          }
+        });
+  }
+
+  render() {
+    const linesText = lines.map((item, index) => <Line key={index} text={item} />);
+    return (
+      <StyledBox>
+        <AppHeader>Textos de teatre</AppHeader>
+        <button name="previous" onClick={this.handleClick}>Anterior</button>
+        <button name="next" onClick={this.handleClick}>Següent</button>
+        <p>{this.state.currentLine}</p>
+        {linesText}
+      </StyledBox>
+    );
+  }
+
+};
 
 export default App;
