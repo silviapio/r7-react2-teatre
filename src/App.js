@@ -23,18 +23,12 @@ class App extends Component {
     }
   }
 
-  handleClick = (event) => {
-    event.target.name === "previous" ? 
+  handleClick = increment => ()=> {  
       this.setState(prevState => {
         return {
-          currentLine: prevState.currentLine - 1
+          currentLine: prevState.currentLine + increment
           }
-        }) :
-      this.setState(prevState => {
-        return {
-          currentLine: prevState.currentLine + 1
-          }
-        });
+        }); 
   }
 
   render() {
@@ -42,8 +36,8 @@ class App extends Component {
     return (
       <StyledBox>
         <AppHeader>Textos de teatre</AppHeader>
-        <button name="previous" onClick={this.handleClick}>Anterior</button>
-        <button name="next" onClick={this.handleClick}>Següent</button>
+        <button onClick={this.handleClick(-1)}>Anterior</button>
+        <button onClick={this.handleClick(1)}>Següent</button>
         <p>{this.state.currentLine}</p>
         {linesText}
       </StyledBox>
