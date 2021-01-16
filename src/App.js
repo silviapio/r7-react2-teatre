@@ -25,30 +25,31 @@ class App extends Component {
     super();
     this.state = {
       currentLineIndex: 0,
-      linesText: lines.map((item, index) => <Line key={index} text={item} />),
+      linesText: lines.map((item, index) => <Line key={index} text={item} isCurrent={index === 0} />),
       previousIsEnabled: false,
       nextIsEnabled: true
     }
   }
 
-  handleClick = increment => ()=> {  
-      this.setState(prevState => {
-        const newIndex = prevState.currentLineIndex + increment;
-        return {
-          currentLineIndex: newIndex,
-          previousIsEnabled: !(newIndex === 0),
-          nextIsEnabled: !(newIndex === prevState.linesText.length - 1)
-          }
-        }); 
+  handleClick = increment => () => {
+    this.setState(prevState => {
+      const newIndex = prevState.currentLineIndex + increment;
+      return {
+        currentLineIndex: newIndex,
+        linesText: lines.map((item, index) => <Line key={index} text={item} isCurrent={index === newIndex} />), //changes isCurrent prop to TRUE based on newIndex
+        previousIsEnabled: !(newIndex === 0),
+        nextIsEnabled: !(newIndex === prevState.linesText.length - 1)
+      }
+    });
   }
 
-  render() {    
+  render() {
     return (
       <StyledBox>
         <AppHeader>Textos de teatre</AppHeader>
         <StyledButton onClick={this.handleClick(-1)} disabled={!this.state.previousIsEnabled}>Anterior</StyledButton>
         <StyledButton onClick={this.handleClick(1)} disabled={!this.state.nextIsEnabled}>Següent</StyledButton>
-        {this.state.linesText[this.state.currentLineIndex]}
+        {this.state.linesText}
       </StyledBox>
     );
   }
