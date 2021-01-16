@@ -12,7 +12,12 @@ const StyledBox = styled.div`
 const AppHeader = styled.header`
   color: #2d3436;
   font-size: 1.2em;
-  font-style: italic;
+  margin-bottom: 20px;
+`;
+
+const StyledButton = styled.button`
+  font-size: 0.7em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 `;
 
 class App extends Component {
@@ -37,19 +42,16 @@ class App extends Component {
         }); 
   }
 
-  render() {
-    
+  render() {    
     return (
       <StyledBox>
         <AppHeader>Textos de teatre</AppHeader>
-        <button onClick={this.handleClick(-1)} disabled={!this.state.previousIsEnabled}>Anterior</button>
-        <button onClick={this.handleClick(1)} disabled={!this.state.nextIsEnabled}>Següent</button>
-        <p>{this.state.currentLineIndex}</p>
+        <StyledButton onClick={this.handleClick(-1)} disabled={!this.state.previousIsEnabled}>Anterior</StyledButton>
+        <StyledButton onClick={this.handleClick(1)} disabled={!this.state.nextIsEnabled}>Següent</StyledButton>
         {this.state.linesText[this.state.currentLineIndex]}
       </StyledBox>
     );
   }
-
 };
 
 export default App;
