@@ -19,27 +19,33 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentLine: 0,
+      currentLineIndex: 0,
+      linesText: lines.map((item, index) => <Line key={index} text={item} />),
+      previousIsEnabled: false,
+      nextIsEnabled: true
     }
   }
 
   handleClick = increment => ()=> {  
       this.setState(prevState => {
+        const newIndex = prevState.currentLineIndex + increment;
         return {
-          currentLine: prevState.currentLine + increment
+          currentLineIndex: newIndex,
+          previousIsEnabled: !(newIndex === 0),
+          nextIsEnabled: !(newIndex === prevState.linesText.length - 1)
           }
         }); 
   }
 
   render() {
-    const linesText = lines.map((item, index) => <Line key={index} text={item} />);
+    
     return (
       <StyledBox>
         <AppHeader>Textos de teatre</AppHeader>
-        <button onClick={this.handleClick(-1)}>Anterior</button>
-        <button onClick={this.handleClick(1)}>Següent</button>
-        <p>{this.state.currentLine}</p>
-        {linesText}
+        <button onClick={this.handleClick(-1)} disabled={!this.state.previousIsEnabled}>Anterior</button>
+        <button onClick={this.handleClick(1)} disabled={!this.state.nextIsEnabled}>Següent</button>
+        <p>{this.state.currentLineIndex}</p>
+        {this.state.linesText[this.state.currentLineIndex]}
       </StyledBox>
     );
   }
