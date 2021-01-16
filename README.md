@@ -1,70 +1,18 @@
-# Getting Started with Create React App
+# R7 React II - Web textos de teatre
+## Nivel 1  - Ejercicio 1
+Se mostran algunas líneas de texto importadas desde un file JSON. Se recorre el JSON con el metodo .map() creando un array de componentes Line, a los cuales se les pasa como prop el texto.
+## Nivel 2 - Ejercicio 2
+Se cambian los estilos de la web a través de la librería styled-components. Se usa en App y en Line, el body se deja con CSS.
+## Nivel 3
+### Ejercicio 3
+Se enseña solo una línea a la vez, empezando por la primera. Se pasa de una línea a otra con los botones Anterior/Següent, los cuales son deshabilitados respectivamente si me encuentro en la primera línea o en la última.
+Se añade un estado a App compuesto por: currentLineIndex (indica el index dónde nos encontramos en el array de textos), linesText (array de componentes Line), previousIsEnabled y nextIsEnabled (dos booleanos que determinan si los botones para retroceder o avanzar tienen que estar habilitados o no).
+Se añade un metodo handleClick que se activa cuando se clican los botones. Este metodo acepta un número como parametro, que será el incremento deseado en currentLineIndex (-1 si es el botón para retroceder, +1 si es el botón para avanzar). Este metodo modifica currentLineIndex, previousIsEnabled y nextIsEnabled según el botón que se clica. En App luego se enseña solamente la línea de texto que corresponde al currentLineIndex.
+### Ejercicio 4
+Se vuelven a enseñar todas las líneas, pero la línea que corresponde al currentLineIndex se resalta con fondo amarillo. Se añade a linesText una prop isCurrent, un booleano que devuelve TRUE cuando el index de la línea es igual al currentLineIndex (se inicializa con TRUE para la línea en la posición 0); además el metodo handleClick ahora también modifica esta prop en las líneas. isCurrent se incluye en el componente Line como propiedad del paragrafo que contiene el texto, y usando conditional rendering y styled-components, se resalta con background amarillo la línea corriente.
 
+## Disclaimer
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
 ## Learn More
-
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
