@@ -1,7 +1,3 @@
-function Line(props){
-    return(
-        <p>{props.text}</p>
-    )
-};
+const Line = ({text}) => <p>{text}</p>;
 
 export default Line;

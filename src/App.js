@@ -3,10 +3,9 @@ import lines from "./linesData.json";
 import Line from "./Line";
 
 function App() {
-  const linesText = lines.map(item => <Line text={item} />);
   return (
     <div className="App">
-      {linesText}
+      {lines.map( text => <Line text={text} />)}
     </div>
   );
 }
