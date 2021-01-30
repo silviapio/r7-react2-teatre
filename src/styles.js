@@ -17,3 +17,8 @@ export const AppHeader = styled.header`
   font-size: 1.2em;
   font-style: italic;
 `;
+
+export const StyledButton = styled.button`
+font-size: 0.7em;
+font-family: 'Segoe UI', 'Ubuntu', sans-serif;
+`;
