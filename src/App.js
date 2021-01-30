@@ -13,25 +13,25 @@ class App extends Component {
     }
   }
 
-  handleClick = increment => ()=> {  
-      this.setState(prevState => {
-        const newIndex = prevState.currentLineIndex + increment;
-        return {
-          currentLineIndex: newIndex,
-          previousIsEnabled: !(newIndex === 0),
-          nextIsEnabled: !(newIndex === lines.length - 1)
-          }
-        }); 
+  handleClick = increment => () => {
+    this.setState(prevState => {
+      const newIndex = prevState.currentLineIndex + increment;
+      return {
+        currentLineIndex: newIndex,
+        previousIsEnabled: !(newIndex === 0),
+        nextIsEnabled: !(newIndex === lines.length - 1)
+      }
+    });
   }
 
   render() {
-    const { previousIsEnabled, nextIsEnabled, currentLineIndex } = this.state;    
+    const { previousIsEnabled, nextIsEnabled, currentLineIndex } = this.state;
     return (
       <StyledBox>
         <AppHeader>Textos de teatre</AppHeader>
         <StyledButton onClick={this.handleClick(-1)} disabled={!previousIsEnabled}>Anterior</StyledButton>
         <StyledButton onClick={this.handleClick(1)} disabled={!nextIsEnabled}>Següent</StyledButton>
-        <Line text={lines[currentLineIndex]} />
+        {lines.map((line, index) => <Line key={index} text={line} isCurrent={index === currentLineIndex} />)} 
       </StyledBox>
     );
   }

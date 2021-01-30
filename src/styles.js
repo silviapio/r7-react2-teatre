@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledParagraph = styled.p`
 color: #6c5ce7;
+background: ${props => props.isCurrent ? "#ffeaa7" : "none"};
 font-size: 0.8em;
 font-style: italic;
 `;

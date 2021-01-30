@@ -1,5 +1,5 @@
 import {StyledParagraph} from './styles';
 
-const Line = ({text}) => <StyledParagraph>{text}</StyledParagraph>;
+const Line = ({text, isCurrent}) => <StyledParagraph isCurrent={isCurrent}>{text}</StyledParagraph>;
 
 export default Line;
