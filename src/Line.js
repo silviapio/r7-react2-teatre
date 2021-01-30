@@ -1,16 +1,5 @@
-import styled from "styled-components";
+import {StyledParagraph} from './styles';
 
-const StyledParagraph = styled.p`
-    color: #6c5ce7;
-    font-size: 0.8em;
-    font-style: italic;
-`;
-
-function Line(props) {
-    return (
-        <StyledParagraph>{props.text}</StyledParagraph>
-    );
-
-};
+const Line = ({text}) => <StyledParagraph>{text}</StyledParagraph>;
 
 export default Line;
